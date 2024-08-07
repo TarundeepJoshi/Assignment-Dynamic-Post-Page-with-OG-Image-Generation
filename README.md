@@ -1,7 +1,3 @@
-Certainly! Here’s the documentation formatted for a GitHub README:
-
----
-
 # Dynamic Post Page with OG Image Generation
 
 ## Overview
@@ -15,7 +11,7 @@ This project involves creating a static post page using React that dynamically g
 
 ## Components
 
-### `PostPage.js`
+### `PostPage.jsx`
 The main component that includes:
 - **State Variables**:
   - `title`: Stores the title of the post.
@@ -34,9 +30,9 @@ The main component that includes:
 
 ### `PostPage.css`
 CSS styles for the `PostPage` component:
-- Centers the heading and form.
 - Ensures form elements are responsive and contained within their container.
 - Styles the OG image preview and form elements for a clean look.
+- Centers the heading and form.
 
 ## How It Works
 
@@ -57,18 +53,18 @@ CSS styles for the `PostPage` component:
 
 ## Source Code
 
-### `PostPage.js`
+### `PostPage.jsx`
 ```jsx
-import React, { useState, useRef } from 'react';
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { toPng } from 'html-to-image';
-import './PostPage.css';
+import React, { useState, useRef } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
+import { toPng } from "html-to-image";
+import "./PostPage.css";
 
 const PostPage = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [ogImageUrl, setOgImageUrl] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [ogImageUrl, setOgImageUrl] = useState("");
   const postRef = useRef(null);
 
   const handleGenerateOgImage = () => {
@@ -77,7 +73,7 @@ const PostPage = () => {
         setOgImageUrl(dataUrl);
       })
       .catch((err) => {
-        console.error('Error generating image:', err);
+        console.error("Error generating image:", err);
       });
   };
 
@@ -85,9 +81,18 @@ const PostPage = () => {
     <HelmetProvider>
       <div className="post-page">
         <Helmet>
-          {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+          {ogImageUrl && (
+            <meta
+              property="og:image"
+              title={title}
+              aria-description={content}
+              content={ogImageUrl}
+            />
+          )}
         </Helmet>
-        <h1 className="post-heading">Assignment: Dynamic Post Page with OG Image Generation</h1>
+        <h1 className="post-heading">
+          Assignment: Dynamic Post Page with OG Image Generation
+        </h1>
         <div className="post-form">
           <input
             type="text"
@@ -109,7 +114,7 @@ const PostPage = () => {
           <button onClick={handleGenerateOgImage}>Generate OG Image</button>
         </div>
         <div className="post-preview" ref={postRef}>
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           <p>{content}</p>
           {imageUrl && <img src={imageUrl} alt="Post" />}
         </div>
@@ -123,6 +128,12 @@ export default PostPage;
 
 ### `PostPage.css`
 ```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .post-page {
   display: flex;
   flex-direction: column;
@@ -131,6 +142,9 @@ export default PostPage;
   font-family: 'Inter', sans-serif;
   background-color: #f5f5f5;
   min-height: 100vh;
+}
+
+h1 {
   justify-content: center;
   text-align: center;
 }
@@ -149,18 +163,16 @@ export default PostPage;
   margin-bottom: 20px;
   width: 100%;
   max-width: 600px;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .post-form input,
 .post-form textarea {
-  width: calc(100% - 20px); /* Adjust width to account for padding */
+  width: 100%;
   margin-bottom: 10px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .post-form button {
@@ -172,7 +184,6 @@ export default PostPage;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .post-form button:hover {
@@ -213,7 +224,7 @@ export default PostPage;
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/TarundeepJoshi/Assignment-Dynamic-Post-Page-with-OG-Image-Generation
    cd your-repo
    ```
 
@@ -224,7 +235,7 @@ export default PostPage;
 
 3. **Start the Development Server**:
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. **Open Your Browser**:
