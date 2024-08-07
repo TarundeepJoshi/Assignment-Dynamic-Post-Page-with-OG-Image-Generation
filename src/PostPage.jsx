@@ -24,7 +24,14 @@ const PostPage = () => {
     <HelmetProvider>
       <div className="post-page">
         <Helmet>
-          {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+          {ogImageUrl && (
+            <meta
+              property="og:image"
+              title={title}
+              aria-description={content}
+              content={ogImageUrl}
+            />
+          )}
         </Helmet>
         <h1 className="post-heading">
           Assignment: Dynamic Post Page with OG Image Generation
