@@ -246,7 +246,3 @@ Feel free to open issues or submit pull requests if you have any improvements or
 
 ## License
 This project is licensed under the MIT License.
-
----
-
-Feel free to replace placeholders with actual details for your project, such as repository URL or license type.
